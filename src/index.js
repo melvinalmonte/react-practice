@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-
 class App extends Component {
 
     constructor(props){
@@ -84,7 +83,6 @@ class SearchBar extends Component {
     }
 }
 
-
 class RepoList extends Component {
 
     render(){
@@ -115,6 +113,5 @@ class RepoItem extends Component {
         )
     }
 }
-
 
 ReactDOM.render(<App/>, document.querySelector(".container"));
