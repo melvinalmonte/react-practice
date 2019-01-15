@@ -25,9 +25,8 @@ class App extends Component {
         });
     };
 
-    options;
     returnsPost(){
-        this.options = {
+        const options = {
             method: 'POST',
             data: {
                 title:'foo',
@@ -37,7 +36,7 @@ class App extends Component {
             credentials: 'include',
             headers: {}
         };
-        fetch('https://jsonplaceholder.typicode.com/posts', this.options)
+        fetch('https://jsonplaceholder.typicode.com/posts', options)
             .then((response) => {
                 return response.json();
             })
@@ -50,6 +49,26 @@ class App extends Component {
             });
     }
 
+    returnFlaskPost(){
+        const options = {
+            headers: {
+                'Content-type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify({
+                'user1': "abc",
+                'user2': 'electric-bugaloo'
+            })
+        };
+        return fetch("http://localhost:5000/api/v1", options)
+            .then((response) => {
+                return(response.text())
+            })
+            .then((text) => {
+                console.log(text)
+            })
+    }
+
     render(){
         return (
             <div className="app-container">
@@ -57,6 +76,7 @@ class App extends Component {
                 <SearchBar handleSubmit={this.handleSearch} />
                 <RepoList repos={this.state.repos}/>
                 <div>{this.returnsPost()}</div>
+                <div>{console.log(this.returnFlaskPost())}</div>
             </div>
         )
     }
