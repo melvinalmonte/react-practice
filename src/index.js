@@ -117,6 +117,7 @@ class RepoList extends Component {
         )
     }
 }
+
 RepoList.defaultProps = {
     repos: []
 };
